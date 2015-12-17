@@ -32,6 +32,8 @@ export class Boosts{
   constructor(public client: Client, params: RouteParams){
     if(params.params['filter'])
       this.filter = params.params['filter'];
+    if(params.params['type'])
+      this.type = params.params['type'];
     this.getBoosts();
   }
 
