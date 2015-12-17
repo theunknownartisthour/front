@@ -75,7 +75,7 @@
 
         <div class="m-boost-admin-state"><i class="material-icons">access_time</i> {{boost.time_created * 1000 | date: 'short'}}</div>
 
-        <div class="m-boost-admin-buttons" *ng-if="filter == 'inbox' && boost.state == 'created'">
+        <div class="m-boost-admin-buttons" *ng-if="type == 'peer' && filter == 'inbox' && boost.state == 'created'">
           <button class="mdl-button mdl-button--raised mdl-button--colored mdl-color--green" (click)="accept(boost, i)">Accept</button>
           <button class="mdl-button mdl-button--raised mdl-button--colored mdl-color--red" (click)="reject(boost, i)">Reject</button>
         </div>
