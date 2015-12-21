@@ -34,13 +34,51 @@
       <a [router-link]="['/Boosts', {type: 'peer', filter: 'outbox'}]" class="mdl-tabs__tab" [ng-class]="{'is-active': filter == 'outbox'}">Outbox</a>
     </div>
 
-    <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" [hidden]="boosts.length > 0 || !inProgress"></div>
-
     <a [router-link]="['/Wallet-Filter', {filter: 'merchants'}]" *ng-if="!session.getLoggedInUser().merchant" class="mdl-card mdl-color--green mdl-color-text--white mdl-shadow--8dp m-boost-console-link">
       <div class="mdl-card__supporting-text mdl-color-text--white ">
         Click here to Monetize your channel
       </div>
     </a>
+
+    <!-- START: Booster -->
+    <div class="m-boost-console-booster" [hidden]="type == 'peer'">
+
+      <!-- CLOSED -->
+      <div class="m-boost-console-booster-closed mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__supporting-text">
+          <button class="mdl-button mdl-color-text--white mdl-button--colored mdl-button--raised m-boost-button-fat"
+            (click)="setBoostToggle(!boostToggle)">
+          Boost
+          </button>
+          Boosting guarantees more views on your posts and content
+        </div>
+      </div>
+      <!-- END: Closed -->
+
+      <!-- OPEN -->
+      <div class="m-boost-console-booster-open mdl-card mdl-shadow--2dp mdl-color--blue-grey-700" *ng-if="boostToggle">
+        <div class="m-boost-console-booster-posts m-boost-console-booster-posts-newsfeed">
+          <h3 class="mdl-color-text--blue-grey-300">Recent posts</h3>
+          <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" [mdl] [hidden]="!boosterToggleInProgress"></div>
+          <minds-activity [object]="post" *ng-for="#post of latestPosts"></minds-activity>
+        </div>
+        <div class="m-boost-console-booster-posts m-boost-console-booster-posts-images">
+          <h3 class="mdl-color-text--blue-grey-300">Recent videos & images</h3>
+          <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" [mdl] [hidden]="!boosterToggleInProgress"></div>
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--6-col" *ng-for="#object of latestMedia">
+              <minds-card-video [object]="object" *ng-if="object.subtype == 'video'"></minds-card-video>
+              <minds-card-image [object]="object" *ng-if="object.subtype == 'image'"></minds-card-image>
+              <minds-card-album [object]="object" *ng-if="object.subtype == 'album'"></minds-card-album>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END: Open -->
+    </div>
+    <!-- END: Booster -->
+
+    <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" [hidden]="boosts.length > 0 || !inProgress"></div>
 
     <div class="mdl-card__supporting-text" [hidden]="inProgress || moreData">
       You have no boosts in your {{filter}}

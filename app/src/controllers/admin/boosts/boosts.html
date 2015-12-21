@@ -1,6 +1,6 @@
 <div class="mdl-tabs__tab-bar">
     <a [router-link]="['/Admin', {filter: 'boosts', type: 'newsfeed'}]" class="mdl-tabs__tab" [ng-class]="{'is-active': type == 'newsfeed'}">Newsfeed ({{newsfeed_count}})</a>
-    <a [router-link]="['/Admin', {filter: 'boosts', type: 'suggested'}]" class="mdl-tabs__tab" [ng-class]="{'is-active': type == 'suggested'}">Suggested ({{suggested_count}})</a>
+    <a [router-link]="['/Admin', {filter: 'boosts', type: 'content'}]" class="mdl-tabs__tab" [ng-class]="{'is-active': type == 'content'}">Content ({{suggested_count}})</a>
 </div>
 
 <div class="mdl-grid minds-boosts" style="max-width:600px">

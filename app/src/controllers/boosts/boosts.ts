@@ -27,6 +27,11 @@ export class Boosts{
   moreData : boolean = true;
   error : string = "";
 
+  boosterToggle : boolean = false;
+  boosterToggleInProgress : boolean = false;
+  latestPosts = [];
+  latestMedia = [];
+
   boosts : Array<any> = [];
 
   constructor(public client: Client, params: RouteParams){
@@ -75,6 +80,31 @@ export class Boosts{
       .catch(e => {
         this.boosts[i].state = 'created';
       });
+  }
+
+  loadLatestPosts(){
+    this.client.get('api/v1/newsfeed/personal')
+      .then((response : any) => {
+        this.latestPosts = response.activity;
+        this.boosterToggleInProgress = false;
+      });
+  }
+
+  loadLatestMedia(){
+    this.client.get('api/v1/entities/owner')
+      .then((response : any) => {
+        this.latestMedia = response.entities;
+        this.boosterToggleInProgress = false;
+      });
+  }
+
+  setBoostToggle(toggle : boolean = true){
+    this.boostToggle = toggle;
+    this.boosterToggleInProgress = true;
+    if(toggle){
+      this.loadLatestPosts();
+      this.loadLatestMedia();
+    }
   }
 
 }
