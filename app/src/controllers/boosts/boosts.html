@@ -106,8 +106,8 @@
           <a [router-link]="['/Channel', {username: boost.destination.username}]">@{{boost.destination.username}}</a>
         </div>
 
-        <div class="m-boost-admin-bid mdl-color-text--green" [hidden]="boost.type != 'pro'"><i class="material-icons">attach_money</i> {{boost.bid}} USD</div>
-        <div class="m-boost-admin-bid mdl-color-text--green" [hidden]="boost.type != 'points'"><i class="material-icons">account_balance</i> {{boost.bid}} points</div>
+        <div class="m-boost-admin-bid mdl-color-text--green" [hidden]="boost.bidType != 'pro'"><i class="material-icons">attach_money</i> {{boost.bid}} USD</div>
+        <div class="m-boost-admin-bid mdl-color-text--green" [hidden]="boost.bidType != 'points'"><i class="material-icons">account_balance</i> {{boost.bid}} points</div>
 
         <div class="m-boost-admin-state"><i class="material-icons">hourglass_empty</i> {{boost.state}}</div>
 
