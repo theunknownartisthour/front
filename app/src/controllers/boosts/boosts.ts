@@ -99,7 +99,7 @@ export class Boosts{
   }
 
   setBoostToggle(toggle : boolean = true){
-    this.boostToggle = toggle;
+    this.boosterToggle = toggle;
     this.boosterToggleInProgress = true;
     if(toggle){
       this.loadLatestPosts();

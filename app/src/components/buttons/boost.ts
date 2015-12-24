@@ -6,7 +6,7 @@ import { BoostModal } from '../modal/modal';
 
 @Component({
   selector: 'minds-button-boost',
-  inputs: ['_object: object']
+  inputs: ['object']
 })
 @View({
   template: `
@@ -14,7 +14,7 @@ import { BoostModal } from '../modal/modal';
       (click)="boost()">
     Boost
     </button>
-    <m-modal-boost [open]="showModal" (closed)="showModal = false" action="vote up"></m-modal-boost>
+    <m-modal-boost [open]="showModal" (closed)="showModal = false" [object]="object"></m-modal-boost>
   `,
   directives: [CORE_DIRECTIVES, BoostModal]
 })
@@ -28,12 +28,6 @@ export class BoostButton {
   showModal : boolean = false;
 
   constructor() {
-  }
-
-  set _object(value : any){
-    if(!value)
-      return;
-    this.object = value;
   }
 
   boost(){

@@ -87,7 +87,7 @@ export class AdminBoosts {
     if(!boost)
       boost = this.boosts[0];
 
-    this.client.post('api/v1/admin/boosts/newsfeed/' + boost.guid  + '/reject')
+    this.client.post('api/v1/admin/boosts/' + this.type + '/' + boost.guid  + '/reject')
       .then((response : any) => {
 
       })
