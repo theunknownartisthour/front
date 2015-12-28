@@ -4,6 +4,7 @@ import { Client } from '../../services/api';
 import { SessionFactory } from '../../services/session';
 import { Material } from '../../directives/material';
 import { CARDS } from '../../controllers/cards/cards';
+import { BUTTON_COMPONENTS } from '../../components/buttons';
 
 @Component({
   selector: 'minds-boosts-console',
@@ -11,7 +12,7 @@ import { CARDS } from '../../controllers/cards/cards';
 })
 @View({
   templateUrl: 'src/controllers/boosts/boosts.html',
-  directives: [ CORE_DIRECTIVES, Material, ROUTER_DIRECTIVES, CARDS]
+  directives: [ CORE_DIRECTIVES, Material, ROUTER_DIRECTIVES, CARDS, BUTTON_COMPONENTS]
 })
 
 export class Boosts{
@@ -105,6 +106,15 @@ export class Boosts{
       this.loadLatestPosts();
       this.loadLatestMedia();
     }
+  }
+
+  boostContent(e){
+    if (!e) e = window.event;
+      e.cancelBubble = true;
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(e);
+    return true;
   }
 
 }
