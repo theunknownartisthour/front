@@ -8,7 +8,7 @@ import { CARDS } from '../../controllers/cards/cards';
   inputs: ['handler', 'limit'],
   template: `
     <h3 class="m-ad-boost-heading mdl-color-text--blue-grey-300"><i class="material-icons">trending_up</i> Boosted content</h3>
-    <div *ng-for="#entity of boosts">
+    <div class="m-ad-boost-entity" *ng-for="#entity of boosts">
       <minds-card-video [object]="entity" class="mdl-card mdl-shadow--8dp" *ng-if="entity.subtype == 'video'"></minds-card-video>
       <minds-card-image [object]="entity" class="mdl-card mdl-shadow--8dp" *ng-if="entity.subtype == 'image'"></minds-card-image>
       <minds-card-blog [object]="entity" class="mdl-card mdl-shadow--8dp" *ng-if="entity.subtype == 'blog'"></minds-card-blog>
