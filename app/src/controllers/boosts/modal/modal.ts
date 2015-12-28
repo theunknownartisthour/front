@@ -11,7 +11,7 @@ import { BoostFullNetwork } from '../boost/full-network/full-network';
   outputs: ['closed'],
   directives: [ CORE_DIRECTIVES, ROUTER_DIRECTIVES, Modal, BoostFullNetwork ],
   template: `
-    <m-modal [open]="open" (closed)="close($event)">
+    <m-modal [open]="open" (closed)="done($event)">
       <minds-boost-full-network [object]="object" (done)="done()"></minds-boost-full-network>
     </m-modal>
   `
@@ -25,7 +25,7 @@ export class BoostModal {
 
   session = SessionFactory.build();
 
-  done(){
+  done(e){
     this.closed.next(true);
   }
 
