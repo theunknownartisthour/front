@@ -14,6 +14,7 @@
     > div{
       flex:1;
       display:flex;
+      flex-direction:column;
       align-items: center;
 
       i.material-icons{
@@ -23,7 +24,8 @@
 
     .m-boost-admin-buttons{
       button{
-        margin-right:8px;
+        height: 25px;
+        line-height: 25px;
       }
     }
     .m-boost-admin-destination{
@@ -32,7 +34,20 @@
         font-weight:bold;
       }
     }
+
+    &.m-boost-admin-tabs-secondary{
+      padding:0;
+    }
+
   }
+
+}
+
+svg.m-facebook-icon{
+  cursor:pointer;
+  background-color: #3067a3;
+  fill:#FFF;
+  margin:auto;
 }
 
 .minds-boost-container{
@@ -86,6 +101,28 @@
    color:#888;
    font-size:11px;
   }
+}
+
+.m-boost-pro-plus{
+
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+
+  svg{
+    cursor:pointer;
+    background: #CCC;
+    fill: #888;
+
+    &.selected{
+      background-color: #3067a3;
+      fill:#FFF;
+    }
+    margin-right:$minds-margin*2;
+  }
+
+
+
 }
 
 .minds-boost-error-message{
