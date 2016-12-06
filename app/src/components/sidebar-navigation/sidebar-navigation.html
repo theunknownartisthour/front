@@ -6,7 +6,7 @@
   		[ngClass]="{'mdl-color--blue-grey-600' : item.active, 'mdl-color--blue-grey-800': !item.active}"
   		[routerLink]="[item.path, item.params]"
       *ngIf="(item.visibility == 2) || (item.visibility === 0 && session.isLoggedIn()) || (item.visibility === -1 && session.isAdmin())"
-  		>
+  		title="{{item.title | lowercase}}">
 
   		<i class="material-icons" [ngClass]="{'mdl-color-text--blue-grey-100': !item.active, 'mdl-color-text--amber-400' : item.active}">{{item.icon}}</i>
       <span id="{{item.name | lowercase}}-counter" class="counter mdl-badge mdl-color--amber-600" *ngIf="!item.active && item.extras && item.extras?.counter">{{item.extras?.counter}}</span>
@@ -18,6 +18,7 @@
         [ngClass]="{'mdl-color--blue-grey-500' : subitem.active, 'mdl-color--blue-grey-700': !subitem.active}"
         [routerLink]="[subitem.path, subitem.params]"
         *ngIf="!(!session.isLoggedIn() && subitem.visibility < 2)"
+        title="{{subitem.title | lowercase}}"
         >
 
         <i class="material-icons" [ngClass]="{'mdl-color-text--blue-grey-100': !subitem.active, 'mdl-color-text--amber-500' : subitem.active}">{{subitem.icon}}</i>
